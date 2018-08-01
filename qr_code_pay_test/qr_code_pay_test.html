@@ -1,0 +1,123 @@
+<div class="QRCodePayTestView" id="normalPage" hidden>
+    <div class="productInfo vertical_box">
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_left">
+                    商品名称:&nbsp;&nbsp;{{productName}}
+                </div>
+                <div class="box_flex_1 text_left text_right">
+                    ￥{{amount}}元
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table vertical_box">
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_right" style="width: 40%">
+                    订单号
+                </div>
+                <div class="box_flex_1 text_left" style="width: 60%">
+                    &nbsp; {{orderId}}
+                </div>
+            </div>
+        </div>
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_right" style="width: 40%">
+                    用户名
+                </div>
+                <div class="box_flex_1 text_left" style="width: 60%">
+                    &nbsp; {{userName}}
+                </div>
+            </div>
+        </div>
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_right" style="width: 40%">
+                    户 &nbsp;&nbsp; 主
+                </div>
+                <div class="box_flex_1 text_left" style="width: 60%">
+                    &nbsp; {{householder}}
+                </div>
+            </div>
+        </div>
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_right" style="width: 40%">
+                    账 &nbsp;&nbsp; 期
+                </div>
+                <div class="box_flex_1 text_left" style="width: 60%">
+                    &nbsp; {{paymentDays}}月
+                </div>
+            </div>
+        </div>
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_right" style="width: 40%">
+                    地 &nbsp;&nbsp; 址
+                </div>
+                <div class="box_flex_1 text_left" style="width: 60%">
+                    &nbsp; {{address}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="confirm_button" type="button" class="btn oc_btn_default" ng-click="goToPay()">去支付</button>
+    <div class="box_flex_1">
+        <div class="box">
+            <div class="box_flex_1 text_right" style="width: 40%">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="errorPage" hidden>
+    <div class="table vertical_box">
+        <div class="box">
+            <div class="box_flex_1 text_center">
+                &nbsp;
+            </div>
+        </div>
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_center">
+                    <img ng-src="img/fail.png" style="height: 80px">
+                </div>
+            </div>
+            <div class="box">
+                <div class="box_flex_1 text_center">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="box">
+                <div class="box_flex_1 text_center">
+                    {{qrErrorMsg}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="QRCodePayTestView">
+    <div class="table vertical_box">
+        <div class="table_row box_flex_1">
+            <div class="table_cell box">
+                <div class="table_cell_title">Code</div>
+                <div class="box_flex_1">
+                    <input id="code" class="textfield_style_1" type="text">{{openid}}
+                </div>
+            </div>
+        </div>
+        <div class="table_row box_flex_1">
+            <div class="table_cell box">
+                <div class="table_cell_title">Openid</div>
+                <div class="box_flex_1">
+                    <input id="openid" class="textfield_style_1" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="getOpenidButton" type="button" class="btn oc_btn_default" ng-click="getOpenid()">获取openId</button>
+    <button id="weixinOrder" type="button" class="btn oc_btn_default" ng-click="weixinOrder()">下单</button>
+</div>

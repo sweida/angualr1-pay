@@ -1,0 +1,22 @@
+
+<div id="title" class="subTitle">请选择支付方式</div>
+
+<div class="table">
+    <dl>
+        <dd ng-repeat="item in data">
+            <div class="table_row">
+                <div ng-class="$last ? 'box table_cell table_cell_last':'box table_cell'"  ng-click="clickOnTableRow(item)">
+                    <div class="table_cell_img">
+                        <img style="width: 40px" ng-src="{{item.imageUrl}}">
+                    </div>
+                    <div class="table_cell_text box_flex_1">{{item.name}}</div>
+                    <div class="table_cell_right">
+                        <img style="width: 20px" ng-src="img/circle-{{item.selected}}.png">
+                    </div>
+                </div>
+            </div>
+        </dd>
+    </dl>
+</div>
+
+<button type="button" class="btn oc_btn_default" ng-click="goToPay()">确定</button>

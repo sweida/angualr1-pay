@@ -1,0 +1,48 @@
+<div class="QRCodePayView">
+    <div class="productInfo vertical_box">
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_left">
+                    商品名称:&nbsp;&nbsp;{{productName}}
+                </div>
+                <div class="box_flex_1 text_left text_right">
+                    ￥{{amount}}元
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table vertical_box">
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_left text_center">
+                    <img id="codeImg" style="width: 248px; height: 248px;" ng-src="data:image/jpg;base64,{{codeImg}}"
+                         ng-click="reSetQRCode()">
+                </div>
+            </div>
+
+            <!--todo 需删除-->
+            <div class="box" id="testUrl" hidden>
+                <div class="box_flex_1 text_left text_center">
+                    <a ng-href="{{url}}">访问去支付页面!</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_left text_center">
+                    <span>支持 微信、支付宝扫码支付</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box_flex_1 text_left text_center">
+                    <span>二维码有效时间为二十分钟</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="confirm_button" type="button" class="btn oc_btn_default" ng-click="queryQROrderResult()">查询支付结果</button>
+</div>

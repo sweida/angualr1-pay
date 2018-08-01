@@ -1,0 +1,82 @@
+<!-- <div class="company">
+
+    <h3 class="title">您未开通翼支付白条</h3>
+    <p class="txt">您可登陆翼支付企业门户(<span>https://auth.bestpay.com.cn</span>)进行开通</p>
+    <a href="#!/select_pay_route" class="goback">返回支付页面</a>
+</div> -->
+
+<div class="main-flex">
+    <div class="main-top">
+        <h3 class="title">天翼电信终端有限公司（机构）</h3>
+        <h2 class="money">{{payMoney | currency:'￥'}}</h2>
+    </div>
+    
+    <div class="main-cell">
+        <div class="title">企业白条支付</div>
+        <div><span>可用额度：{{availableMoney | currency:'￥'}}元</span><span class="red" ng-if="availableMoney < payMoney">额度不足</span></div>
+    </div>
+    
+    <div class="main-bottom">
+        <button id="confirm_button" type="button" class="btn oc_btn_default" ng-disabled="availableMoney < payMoney" ng-click="confirmToPay()">提交</button>
+    </div>
+</div>
+
+
+<style>
+.company{
+    text-align: center;
+    background: #fff;
+    height: calc(100% - 44px);
+    position: absolute;
+    width: 100%;
+    font-size: 16px;
+}
+.title{
+    font-size: 18px;
+}
+.txt{
+    padding: 0 10%;
+}
+.txt span, .goback{
+    color: #ff9900;
+}
+.main-flex{
+    width: 100%;
+    height: calc(100% - 44px);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+.main-top{
+    height: 140px;
+    background: #fff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.money{
+    font-size: 28px;
+    color: #ff9900;
+}
+.main-cell{
+    padding: 8px 20px;
+    background: #fff url(/app/img/circle-true.png) right 20px center no-repeat;
+    background-size: 20px;
+    margin-bottom: 20px;
+}
+.main-cell .title{
+    font-size: 16px;
+    margin-bottom: 4px;
+}
+.main-cell .red{
+    padding-left: 40px;
+    color: red;
+}
+.main-bottom{
+    background: #fff;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 40px;
+    flex-direction: column;
+}
+</style>

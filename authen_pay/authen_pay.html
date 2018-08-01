@@ -1,0 +1,117 @@
+<div class="authenPayView">
+    <div class="productInfo vertical_box">
+        <div class="box_flex_1">
+            <div class="box">
+                <div class="box_flex_1 text_left" >
+                    商品名称:&nbsp;&nbsp;{{productName}}
+                </div>
+                <div class="box_flex_1 text_left text_right">
+                    ￥{{amount}}元
+                </div>
+            </div>
+        </div>
+        <div class="box_flex_1" >
+            <div class="box">
+                <div class="box_flex_1">
+                    <span class="text_left">收款商户:&nbsp;&nbsp;{{merchantName}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<form name="auth_pay_form" ng-submit="submitForm(auth_pay_from.$valid)" novalidate>-->
+        <div class="table vertical_box">
+            <div class="table_row box_flex_1">
+                <div class="table_cell box">
+                    <div class="table_cell_title">银行卡号</div>
+                    <div class="box_flex_1" style="background-color: red">
+                        <input id="CardNoInputText"
+                               class="textfield_style_1"
+                               type="text"
+                               ng-model="cardNo"
+                               placeholder="请输入您的银行卡号"
+                               ng-change="checkALL(0)"
+                               >
+                    </div>
+                 </div>
+            </div>
+            <div class="table_row box_flex_1">
+                <div class="table_cell box">
+                    <div class="table_cell_title">姓名</div>
+                    <div class="box_flex_1">
+                        <input id="CardHolderInputText"
+                               class="textfield_style_1"
+                               type="text"
+                               ng-model="cardHolder"
+                               placeholder="请输入您的姓名"
+                               ng-change="checkALL(0)"
+                               >
+                    </div>
+                </div>
+            </div>
+            <div class="table_row box_flex_1">
+                <div class="table_cell box">
+                    <div class="table_cell_title">身份证号</div>
+                    <div class="box_flex_1">
+                        <input id="IDCardInputText"
+                               class="textfield_style_1"
+                               type="text"
+                               ng-model="idCardNo"
+                               placeholder="请输入您的身份证号码"
+                               ng-change="checkALL(0)"
+                               >
+                    </div>
+                </div>
+            </div>
+            <div class="table_row box_flex_1">
+                <div class="table_cell box">
+                    <div class="table_cell_title">手机号</div>
+                    <div class="box_flex_1">
+                        <input id="PhoneNoInputText"
+                               class="textfield_style_1"
+                               type="text"
+                               ng-model="phoneNo"
+                               placeholder="银行预留手机号"
+                               ng-change="checkALL(0)"
+                               >
+                    </div>
+                </div>
+            </div>
+            <div class="table_row box_flex_1">
+                <div class="table_cell table_cell_last box">
+                    <div class="table_cell_title">验证码</div>
+                    <div class="box_flex_1">
+                        <input id="VerifyCode"
+                               class="textfield_style_2"
+                               type="text"
+                               ng-model="verifyCode"
+                               placeholder="请输入验证码"
+                               ng-change="checkALL(0)">
+                    </div>
+                    <div style="width: 30%;">
+                        <button id="verify_button" class="btn verify_button" type="button" ng-click="getVerifySMS()" >获取验证码</button>
+                    </div>
+                </div>
+            </div>
+            <div class="table_row box_flex_1 agreement_table">
+                <div class="table_cell table_cell_last box">
+                    <div class="box_flex_1">
+                        <div class="box" ng-click="clickOnAgreement()">
+                            <div ng-class="agreement? 'main_checkbox_selected':'main_checkbox_none'" ></div>
+                            <div class="box_flex_1 agreement">
+                                <span style="color: #8d8d8d;">&nbsp;&nbsp;同意</span>
+                                <a style="color: #ff9900;" href="#!authen_pay/authen_pay_agreement">翼支付&lt;代扣授权&gt;</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box_flex_1 verify_help" >
+                        <a style="color: #ff9900;" href="#!authen_pay/authen_pay_help">收不到验证码?</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <button id="confirm_button" type="button" class="btn oc_btn_default" disabled=true ng-click="confirmToPay()">确认支付</button>
+    <!--</form>-->
+</div>

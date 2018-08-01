@@ -1,0 +1,25 @@
+<div class="unionPayView">
+    <div class="alert_box_background" ng-show="submitResult"  style="z-index: 900">
+        <div class="alert_box">
+            <table class="alert_box_table">
+                <tr>
+                    <td colspan="2" class="alert_box_row_middle"><span class="alert_box_title">温馨提示</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="alert_box_msg">若您已经完成支付，可点击确定查看支付结果</span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <button type="button" class="btn oc_btn_alert_box" ng-click="viewResult(UNIQUEID)">确定</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

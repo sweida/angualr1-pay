@@ -1,0 +1,236 @@
+<div class="company">
+    <div class="authenPayView">
+        <div class="comp-top">
+
+        </div>
+        <!--<form name="auth_pay_form" ng-submit="submitForm(auth_pay_from.$valid)" novalidate>-->
+        <div class="table vertical_box">
+            <div class="table_row box_flex_1">
+                <div class="table_cell box">
+                    <div class="table_cell_title">账号</div>
+                    <div class="box_flex_1">
+                        <input id="CardNoInputText"
+                                class="textfield_style_1"
+                                type="text"
+                                ng-model="cardNo"
+                                placeholder="请输入登录账号"
+                                ng-change="checkALL(0)"
+                                >
+                    </div>
+                    </div>
+            </div>
+            <div class="table_row box_flex_1">
+                <div class="table_cell box">
+                    <div class="table_cell_title">密码</div>
+                    <div class="box_flex_1">
+                        <div id="keyBox" class="security-key textfield_style_1" data-type="default" data-name="all-keyboard" data-lgh="20" data-val data-holder="请输入登录密码">
+                            请输入登录密码
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="table_row box_flex_1">
+                <div class="table_cell box">
+                    <div class="table_cell_title">验证码</div>
+                    <div class="box_flex_1">
+                        <input id="IDCardInputText"
+                                class="textfield_style_1"
+                                type="text"
+                                ng-model="idCardNo"
+                                placeholder="请输入验证码"
+                                maxlength="4"
+                                ng-change="checkALL(0)"
+                                >
+                    </div>
+                    <div style="width: 30%;">
+                        <div class="img-verify">
+                            <canvas 
+                                ref="verify" 
+                                id="ImgCanvas"
+                                width="120" 
+                                height="40"  
+                                ng-click="handleDraw()" 
+                                class='canvasImg'>
+                            </canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button id="confirm_button" type="button" class="btn oc_btn_default" ng-click="confirmToPay()">登录</button>
+        <a href="https://h5.bestpay.com.cn/subapps/bpep-credit-h5/index.html#/signentry" class="color_norm">注册开户</a>
+
+    </div>
+            
+</div>
+
+<script type="text/javascript" src="/app/js/securityKeyboard.min.js"></script>
+
+<style>
+.security-key {
+    padding: 0 10px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #999;
+}
+.security-key_wrap>span{
+    top:10px !important;
+}
+
+/* .btn.focus, .btn:focus, .btn:hover {
+  color: #fff !important;
+}
+#confirm_button:active, #confirm_button:hover, #confirm_button.focus{
+    background: #d88200 !important;
+} */
+.company{
+    background: #fff;
+    height: calc(100% - 44px);
+    position: absolute;
+    width: 100%;
+}
+.comp-top{
+    height: 100px;
+}
+.color_norm{
+    padding: 20px;
+    float: right;
+    font-size: 16px;
+    color: #ff9900;
+}
+input{
+    outline: none;
+}
+.img-verify{
+    width: 80px;
+    height: 36px;
+    margin: auto;
+}
+.img-verify canvas {
+  cursor: pointer;
+  width: 80px;
+  height: 36px
+}
+</style>
+
+<script>
+    // obj 密码的id
+    // servlet 接口
+    // ifCursor 密码框内是否需要竖杠
+    // 46测试 ip
+    let keyId = document.getElementById('keyBox');
+    let ip = "http://mapi.test1.bestpay.net/mapi/";
+    wrapper.init({
+        obj:[keyId],
+        servlet:""+ip+"seccore/generateKeyInfo",
+        servletKey:""+ip+"",
+        ifCursor:'yes'
+    });
+    function subBtn() {
+        var publicClass = wrapper.public();
+        var encodeVal = wrapper.getPwdParaMobile(publicClass._this);
+        publicClass.aesKeytoString = wrapper.public().aesKeytoString;
+        publicClass.ajax(publicClass.servletKey, {"encData" : encodeVal,"keyIndex" : publicClass.sessionId ,"encdataKey" : publicClass.aesKeytoString}, function (data) {
+            var response;
+            if (!!window.ActiveXObject || "ActiveXObject" in window) {
+                response = JSON.parse(data.responseText);
+            } else {
+                response = (data.response);
+            }
+            if(response.success == true){
+                alert(response.pwd);
+            }else{
+                alert("接口错误");
+            }
+        })
+
+    }
+
+    // 1.随机数
+    function randomNum(min, max) {
+      return parseInt(Math.random() * (max - min) + min)
+    }
+    // 2.随机颜色
+    function randomColor(min, max) {
+      const r = this.randomNum(min, max)
+      const g = this.randomNum(min, max)
+      const b = this.randomNum(min, max)
+      return `rgb(${r},${g},${b})`
+    }
+    // 点击图片重新绘制
+    function handleDraw() {
+      this.canvasImg()
+    }
+    // 绘制图片
+    function canvasImg(){
+        let Canvas = document.getElementById("ImgCanvas")
+        let pool =  'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+        // 3.填充背景颜色，背景颜色要浅一点
+        const ctx = Canvas.getContext('2d')
+        // 填充颜色
+        ctx.fillStyle = this.randomColor(180, 230)
+        // 填充的位置
+        ctx.fillRect(0, 0, 120, 50)
+        // 定义paramText
+        let imgCode = ''
+        // 4.随机产生字符串，并且随机旋转
+        for (let i = 0; i < 4; i++) {
+        // 随机的四个字
+        const text = pool[this.randomNum(0, pool.length)]
+        imgCode += text
+        // 随机的字体大小
+        const fontSize = this.randomNum(30, 40)
+        // 字体随机的旋转角度
+        const deg = this.randomNum(-30, 30)
+        /*
+            * 绘制文字并让四个文字在不同的位置显示的思路 :
+            * 1、定义字体
+            * 2、定义对齐方式
+            * 3、填充不同的颜色
+            * 4、保存当前的状态（以防止以上的状态受影响）
+            * 5、平移translate()
+            * 6、旋转 rotate()
+            * 7、填充文字
+            * 8、restore出栈
+            * */
+        ctx.font = fontSize + 'px Simhei'
+        ctx.textBaseline = 'top'
+        ctx.fillStyle = this.randomColor(80, 150)
+        /*
+            * save() 方法把当前状态的一份拷贝压入到一个保存图像状态的栈中。
+            * 这就允许您临时地改变图像状态，
+            * 然后，通过调用 restore() 来恢复以前的值。
+            * save是入栈，restore是出栈。
+            * 用来保存Canvas的状态。save之后，可以调用Canvas的平移、放缩、旋转、错切、裁剪等操作。 restore：用来恢复Canvas之前保存的状态。防止save后对Canvas执行的操作对后续的绘制有影响。
+            *
+            * */
+        ctx.save()
+        ctx.translate(30 * i + 15, 15)
+        ctx.rotate(deg * Math.PI / 180)
+        // fillText() 方法在画布上绘制填色的文本。文本的默认颜色是黑色。
+        // 请使用 font 属性来定义字体和字号，并使用 fillStyle 属性以另一种颜色/渐变来渲染文本。
+        // context.fillText(text,x,y,maxWidth);
+        ctx.fillText(text, -15 + 5, -15)
+        ctx.restore()
+        }
+        // 5.随机产生5条干扰线,干扰线的颜色要浅一点
+        // for (let i = 0; i < 3; i++) {
+        //   ctx.beginPath()
+        //   ctx.moveTo(this.randomNum(0, 120), this.randomNum(0, 50))
+        //   ctx.lineTo(this.randomNum(0, 120), this.randomNum(0, 50))
+        //   ctx.strokeStyle = this.randomColor(180, 230)
+        //   ctx.closePath()
+        //   ctx.stroke()
+        // }
+        // 6.随机产生40个干扰的小点
+        for (let i = 0; i < 20; i++) {
+        ctx.beginPath()
+        ctx.arc(this.randomNum(0, 120), this.randomNum(0, 50), 1, 0, 2 * Math.PI)
+        ctx.closePath()
+        ctx.fillStyle = this.randomColor(150, 200)
+        ctx.fill()
+        }
+        console.log(imgCode, '这是验证码');
+    }
+</script>

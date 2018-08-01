@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+  <title>翼支付收银台</title>
+  <meta name="description" content="">
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+  <link rel="stylesheet" href="app.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css" media="all">
+  <link rel='stylesheet' href='bower_components/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+</head>
+<body class="main" ng-app="myApp" ng-controller="CahAPP">
+  <div class="vertical_box" id="indexHtml">
+     <div style="height: 44px">
+       <!--错误提示框-->
+       <div alert-box-controller></div>
+       <!--loading栏-->
+       <div id="loading-bar-container"></div>
+       <!--导航栏-->
+       <div navigation-controller nav-bar="navigationBar"></div>
+       <!--警告栏 -->
+       <div id="warning-bar" class="warning_bar"></div>
+     </div>
+     <div class="box_flex_1 ngview">
+       <!--主界面-->
+       <div ng-view></div>
+     </div>
+     <div style="height: 45px;">
+       <!--版权-->
+       <div class="version_info">本支付服务由翼支付提供</div>
+     </div>
+  </div>
+
+
+  <script src="https://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+  <script src="app.js"></script>
+  <script src="select_pay_route/select_pay_route.js"></script>
+  <script src="authen_pay/authen_pay.js"></script>
+  <script src="union_pay/union_pay.js"></script>
+  <script src="pay_result/pay_result.js"></script>
+  <script src="qr_pay_result/qr_pay_result.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+  <script src="authen_pay/agreements/authen_pay_agreement.js"></script>
+  <script src="authen_pay/agreements/authen_pay_help.js"></script>
+  <script src="authen_allocate_pay/authen_allocate_pay.js"></script>
+  <script src="create_qr_code/create_qr_code.js"></script>
+  <script src="qr_code_pay/qr_code_pay.js"></script>
+  <script src="qr_code_pay_test/qr_code_pay_test.js"></script>
+  <script src="company_white_bar/company_white_bar.js"></script>
+  <script src="signin_result/signin_result.js"></script>
+  <script src="company_payment/company_payment.js"></script>
+  <script src="create_order/create_order.js"></script>
+</body>
+</html>

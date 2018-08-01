@@ -1,0 +1,27 @@
+<div id="alert-box"  class="alert_box_background" ng-hide="alertBox.hide">
+    <div class="alert_box">
+        <table class="alert_box_table">
+            <tr>
+                <!--<td rowspan="4" class="alert_box_row_left"><img style="width: 50px" src="img/fail.png"></td>-->
+                <td class="alert_box_row_left">&nbsp;</td>
+                <td class="alert_box_row_middle"><span class="alert_box_title">{{alertBox.title}}</span></td>
+                <td class="alert_box_row_left">&nbsp;</td>
+            </tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td align="center"><span class="alert_box_msg">{{alertBox.content}}</span></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr><td colspan="3">&nbsp;</td></tr>
+            <tr ng-switch on="alertBox.style">
+                <td colspan="3" ng-switch-default>
+                    <button type="button" class="btn oc_btn_alert_box" ng-click="alertBox.dismiss()">确定</button>
+                </td>
+                <td colspan="3" ng-switch-when="-1">
+                    <button type="button" class="btn oc_btn_alert_box" ng-click="alertBox.userCallBack()">确定</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

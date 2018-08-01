@@ -1,0 +1,108 @@
+<div class="company">
+    <div id="frame">
+        <div class="border">
+            <div id="bar" ng-style="barObj">
+                
+            </div>
+            <div id="persentage" >
+                {{persent}}
+            </div>
+        </div>              
+    </div>
+    <div ng-if="loading">
+        <h3 class="title">合同生成中...</h3>
+        <p class="version_info">请不要关闭本页面</p>
+    </div>
+    <div ng-if="!loading">
+        <h3 class="title">系统加载失败</h3>
+        <p class="version_info">点击下面重新生成合同</p>
+    </div>
+</div>
+
+
+
+<style>
+.company{
+    text-align: center;
+    background: #fff;
+    height: calc(100% - 44px);
+    position: absolute;
+    width: 100%;
+    font-size: 16px;
+}
+.title{
+    font-size: 18px;
+}
+
+</style>
+
+
+<!-- <div class="bg">
+    <img ng-src="{{bgImgUrl}}" /> 
+</div>
+<div id="frame">
+    <div class="border">
+        <div id="bar" ng-style="barObj" style="width: 1%">
+            
+        </div>
+        <div id="persentage">
+            1%
+        </div>
+    </div>              
+</div>
+<div class="contract_tip">
+    <h3>合同生成中</h3>
+    <h3>请不要关闭页面</h3>
+</div> -->
+<style text="text/css">
+    .bg{
+        width: 100%;
+        height: 200px;position: relative;
+    }
+    .bg img{
+        width: 70px;
+        height: 70px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .contract_tip{
+        text-align: center;
+    }
+    #frame .border{
+        width: 300px;
+        margin:10px 30px;
+        border:2px solid black;
+        border-radius:50px;
+        height: 30px;
+        background-image: -moz-linear-gradient(top,#b0b0b0,#f8f8f8);
+        background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#b0b0b0),color-stop(1,#f8f8f8));
+        filter: progid:DXImageTransfrom.Microsoft.gradient(startColorstr='#b0b0b0',endColorstr='#f8f8f8',GradientType='0');
+
+        overflow: hidden;
+        position: relative;
+/*
+        border: 2px solid black;
+        border-bottom-width:4px;
+        border-top-width: 3px; */
+    }
+    #frame .border #bar{
+        height: 100%;
+        background-image: -moz-linear-gradient(top,#b0b0b0,#f8f8f8);
+        background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,#8efb3c),color-stop(1,#7ac478));
+        filter: progid:DXImageTransfrom.Microsoft.gradient(startColorstr='#8efb3c',endColorstr='#7ac478',GradientType='0');
+        -webkit-transition:all 0.1s ease-in-out 0s;
+        transition:all 0.1s ease-in-out 0s;
+    }
+    #frame .border #persentage{
+        position: absolute;
+        left:0;
+        top:0;
+        width: 100%;
+        text-align: center;
+        padding:5px;
+        color: red;
+        font-weight: bold;
+    }
+    </style>

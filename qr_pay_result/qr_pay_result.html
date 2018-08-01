@@ -1,0 +1,98 @@
+<div class="table">
+
+    <table width="100%" border="0px">
+        <tr style="background-color: #efeff4">
+            <td width="25%">&nbsp;</td>
+            <td width="5%">&nbsp;</td>
+            <td width="35%">&nbsp;</td>
+            <td width="35%">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" height="15px">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" height="100px">
+                <img ng-src="img/{{imgPath}}.png" style="height: 80px">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" height="15px">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" height="30px">
+                <span style="font-size: 25px" ng-bind="desc"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" height="10px" ><div class="table_cell"></div></td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" height="15px">&nbsp;</td>
+        </tr>
+        <tr>
+            <td align="right" height="25px">
+                <span style="font-size: 15px" >收款商户</span>
+            </td>
+            <td>&nbsp;</td>
+            <td colspan="2" align="left">
+                <span style="font-size: 15px" ng-bind="payResult.acctName"></span>
+            </td>
+        </tr>
+        <tr ng-show="payResult.productName">
+            <td  align="right" height="25px">
+                <span style="font-size: 15px" >商品名称</span>
+            </td>
+            <td>&nbsp;</td>
+            <td colspan="2" align="left">
+                <span style="font-size: 15px" ng-bind="payResult.productName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td  align="right" height="25px">
+                <span style="font-size: 15px">付款金额</span>
+            </td>
+            <td>&nbsp;</td>
+            <td colspan="2" align="left" height="25px">
+                <span style="font-size: 15px" >￥{{payResult.orderModel.orderAmount}}元</span>
+            </td>
+        </tr>
+        <tr>
+            <td  align="right" height="25px">
+                <span style="font-size: 15px">交易单号</span>
+            </td>
+            <td>&nbsp;</td>
+            <td colspan="2" align="left">
+                <span style="font-size: 15px" ng-bind="payResult.orderModel.orderId"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center" height="45px">&nbsp;</td>
+        </tr>
+
+    </table>
+
+</div>
+<!--<button id="confirm_button" type="button" class="btn oc_btn_default"  ng-click="backToMerchant()">返回商户</button>-->
+<form id="fm"  action="{{synUrl}}" method="post" target="_blank">
+    <p>
+        <div ng-show="payResult.orderModel.orderStatus=='1' && synUrl!=''">
+            <button type="submit" class="btn oc_btn_default">返回商户网站</button>
+            <input type="hidden" id="ORGLOGINCODE" name="ORGLOGINCODE" value="{{payResult.orderModel.orgLoginCode}}"/>
+            <input type="hidden" id="MERCHATCODE" name="MERCHATCODE" value="{{payResult.orderModel.merchantCode}}"/>
+            <input type="hidden" id="PLATCODE" name="PLATCODE" value="{{payResult.orderModel.platCode}}"/>
+            <input type="hidden" id="CUSTCODE" name="CUSTCODE" value="{{payResult.orderModel.custCode}}"/>
+            <input type="hidden" id="ORDERID" name="ORDERID" value="{{payResult.orderModel.orderId}}"/>
+            <input type="hidden" id="TRSSEQ" name="TRSSEQ" value="{{payResult.orderModel.coreOrderId}}"/>
+            <input type="hidden" id="ORDERAMOUNT" name="ORDERAMOUNT" value="{{payResult.orderModel.orderAmount}}"/>
+            <input type="hidden" id="FEE" name="FEE" value="{{payResult.orderModel.orderFee}}"/>
+            <input type="hidden" id="TRANSDATE" name="TRANSDATE" value="{{transTime}}"/>
+            <input type="hidden" id="ORDERSTATUS" name="ORDERSTATUS" value="{{payResult.orderModel.orderStatus}}"/>
+            <input type="hidden" id="BANKCODE" name="BANKCODE" value="{{payResult.orderModel.bankCode}}"/>
+            <input type="hidden" id="PERENTFLAG" name="PERENTFLAG" value="{{payResult.orderModel.perEntFlag}}"/>
+            <input type="hidden" id="COMMENT1" name="COMMENT1" value="{{payResult.orderModel.comment1}}"/>
+            <input type="hidden" id="COMMENT2" name="COMMENT2" value="{{payResult.orderModel.comment2}}"/>
+            <input type="hidden" id="SIGNSTR" name="SIGNSTR" value="{{signStr}}"/>
+            <input type="hidden" id="initiationID" name="initiationID" value="{{payResult.orderModel.initiationID}}"/>
+        </div>
+    </p>
+</form>
