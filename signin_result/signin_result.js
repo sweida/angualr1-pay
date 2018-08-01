@@ -1,13 +1,6 @@
 'use strict';
 
 angular.module('myApp.signin_result', ['ngRoute'])
-
-    .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/signin_result', {
-            templateUrl:'/app/signin_result/signin_result.html',
-            controller:'signinResult'
-        });
-    }])
     .controller('signinResult', function($scope, $http, $rootScope, $location){
 
         $rootScope.navigationBar.leftBarItem.title = '';

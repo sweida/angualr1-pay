@@ -1,25 +1,6 @@
 'use strict';
 
 angular.module('myApp.company_white_bar', ['ngRoute'])
-
-    .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/MOBILE_COMPOSITE_PAY', {
-            templateUrl:'/app/company_white_bar/company_white_bar.html',
-            controller:'CompanyBar'
-        });
-    }])
-
-    // .directive('imageonload', function(){
-    //     return {
-    //         restrict:'A', link:function(scope, element, attrs){
-    //             element.bind('load', function(){
-    //                 //call the function that was passed
-    //                 scope.$apply(attrs.imageonload);
-    //             });
-    //         }
-    //     };
-    // })
-
     .controller('CompanyBar', function($scope, $http, $rootScope, $location){
 
         $rootScope.navigationBar.leftBarItem.title = '';

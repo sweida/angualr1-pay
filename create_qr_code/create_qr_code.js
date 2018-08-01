@@ -1,14 +1,6 @@
 'use strict';
 
 angular.module('myApp.create_qr_code', ['ngRoute'])
-
-    .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/QR_CODE_CONLLECTION', {
-            templateUrl:'/app/create_qr_code/create_qr_code.html',
-            controller:'CreateQRCode'
-        });
-    }])
-
     .directive('imageonload', function(){
         return {
             restrict:'A', link:function(scope, element, attrs){

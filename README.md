@@ -1,1 +1,0 @@
-# angualr1-pay

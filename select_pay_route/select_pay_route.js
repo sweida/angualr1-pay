@@ -1,14 +1,6 @@
 'use strict';
 
 angular.module('myApp.select_pay_route', ['ngRoute','ui.bootstrap','ngSanitize','ngAnimate'])
-
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/select_pay_route', {
-            templateUrl: '/app/select_pay_route/select_pay_route.html',
-            controller: 'selectPayRouteViewCtrl'
-        });
-    }])
-
     .controller('selectPayRouteViewCtrl', function ($scope, $location, $rootScope, $http) {
         var dataList = [];
 

@@ -1,12 +1,6 @@
 'use strict';
 
 angular.module('myApp.create_order', ['ngRoute'])
-    .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/create_order', {
-            templateUrl:'/app/create_order/create_order.html',
-            controller:'createOrder'
-        });
-    }])
     .controller('createOrder', function ($scope, $interval, $location, $rootScope, $http, $timeout) {
         $rootScope.navigationBar.title = '签署借款合同';
         $scope.bgImgUrl = '/app/img/MOBILE_COMPOSITE_PAY.png'

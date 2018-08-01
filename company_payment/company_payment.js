@@ -1,13 +1,6 @@
 'use strict';
 
 angular.module('myApp.company_payment', ['ngRoute'])
-
-    .config(['$routeProvider', function($routeProvider){
-        $routeProvider.when('/company_payment', {
-            templateUrl:'/app/company_payment/company_payment.html',
-            controller:'CompanyPayment'
-        });
-    }])
     .controller('CompanyPayment', function($scope, $http, $rootScope, $location){
 
         $rootScope.navigationBar.leftBarItem.title = '';
